@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from taxi.forms import DriverCreationForm, CarForm, DriverLicenseUpdateForm
 from taxi.models import Car, Manufacturer
 
+
 @login_required
 def index(request):
     """View function for the home page of the site."""
@@ -89,7 +90,9 @@ class DriverListView(LoginRequiredMixin, generic.ListView):
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):
     model = get_user_model()
-    queryset = get_user_model().objects.all().prefetch_related("cars__manufacturer")
+    queryset = get_user_model().objects.all().prefetch_related(
+        "cars__manufacturer"
+    )
 
 
 class DriverCreateView(LoginRequiredMixin, generic.CreateView):
