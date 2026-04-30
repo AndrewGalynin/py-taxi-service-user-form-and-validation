@@ -36,4 +36,5 @@
   {% empty %}
     <p>No drivers assigned yet.</p>
   {% endfor %}
+  <a href="{% url 'taxi:car-list' %}" class="btn btn-secondary">Cancel</a>
 {% endblock %}
